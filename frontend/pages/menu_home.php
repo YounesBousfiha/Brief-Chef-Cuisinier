@@ -16,24 +16,27 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="ajouteModalLabel">Fait une Reservation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" id="btn-close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modaSignupl-body px-3">
-                    <form action="" method="POST">
+                    <form action="#" method="POST" id="reservationForm">
                         <div class="mb-3">
                             <label class="form-label">Number des Personne</label>
                             <input type="number" name="personnes" class="form-control" placeholder="Enter le number des personnes...">
+                            <span id="personnesError"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Date</label>
                             <input type="date" name="date" class="form-control" placeholder="nom...">
+                            <span id="dateError"></span>
                         </div>
                        <div class="mb-3">
                             <label class="form-label">Time</label>
-                            <input type="time" class="form-control" min="09:00" max="11:59">
+                            <input type="time" name="time" class="form-control" min="09:00" max="11:59">
+                            <span id="timeError"></span>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                            <button type="submit" id="submitReservation" class="btn btn-primary w-100">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -184,6 +187,7 @@
   <!-- Copyright -->
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/app.js"></script>
 </body>
 
 </html>
