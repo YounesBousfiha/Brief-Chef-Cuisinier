@@ -87,9 +87,9 @@
                         <h4>Menu de petit-dejuner</h4>
                         <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-primary w-50" type="button" data-bs-toggle="modal" data-bs-target="#reservation" style="font-size: 24;background: #51637e;">Select</button>
-                        <button class="btn btn-primary w-50" type="button" data-bs-toggle="modal" data-bs-target="#displayMenu" style="font-size: 24;background: #51637e;">Display</button>
+                    <div class="d-flex justify-content-around">
+                        <button class="btn text-white w-25" type="button" data-bs-toggle="modal" data-bs-target="#reservation" style="font-size: 24;background: #51637e;">Select</button>
+                        <button class="btn text-white w-25" type="button" data-bs-toggle="modal" data-bs-target="#displayMenu" style="font-size: 24;background: #51637e;">Display</button>
 
                     </div>
                 </div>
@@ -186,6 +186,7 @@
   </div>
   <!-- Copyright -->
 </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/app.js"></script>
 </body>

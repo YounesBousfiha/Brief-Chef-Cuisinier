@@ -1,3 +1,5 @@
+//import Swal from 'sweetalert2';
+
 function addmorefied() {
     let btns = document.getElementById('buttons');
 
@@ -26,19 +28,37 @@ function reservationSubmit(event) {
     console.log(dates);
 
     if(!personnes || !numbersPattern.test(personnes)) {
-        personnesError.textContent = 'Incorrect Input';
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Incorrect Input for Number of Persons'
+        });
         return;
     }
 
     if(!dates || !datespattern.test(dates)) {
-        dateError.textContent = "Incorect Date Format"
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Incorrect Input for dates'
+        });
         return;
     }
 
     if(!times || !timePattern.test(times)) {
-        timeError.textContent = "Inccorect time Format";
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Incorrect Input for times'
+        });
         return;
     }
+
+    Swal.fire({
+        title: "You Just Make a Reservation!",
+        text: "Thanks for We will contact you soon!",
+        icon: "success"
+      });
 
     document.getElementById('btn-close').click()
 }
