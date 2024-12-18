@@ -25,7 +25,7 @@
                     <form action="#" method="POST" id="reservationForm">
                         <div class="mb-3">
                             <label class="form-label">Dish Name</label>
-                            <input type="text" name="dishname" class="form-control" placeholder="Enter le number des personnes...">
+                            <input type="text" name="dishname" class="form-control" placeholder="Dish name...">
                             <span id="dishnameError"></span>
                         </div>
                         <div class="mb-3">
@@ -39,7 +39,7 @@
                             <span id="dishimageError"></span>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" id="submitReservation" class="btn btn-primary w-100">Submit</button>
+                            <button type="button" id="submitPlats" class="btn btn-primary w-100">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -179,6 +179,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/Sidebar-Menu-sidebar.js"></script>
     <script src="../assets/js/app.js"></script>

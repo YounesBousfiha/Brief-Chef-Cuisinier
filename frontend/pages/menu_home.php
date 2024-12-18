@@ -23,17 +23,14 @@
                         <div class="mb-3">
                             <label class="form-label">Number des Personne</label>
                             <input type="number" name="personnes" class="form-control" placeholder="Enter le number des personnes...">
-                            <span id="personnesError"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Date</label>
                             <input type="date" name="date" class="form-control" placeholder="nom...">
-                            <span id="dateError"></span>
                         </div>
                        <div class="mb-3">
                             <label class="form-label">Time</label>
                             <input type="time" name="time" class="form-control" min="09:00" max="11:59">
-                            <span id="timeError"></span>
                         </div>
                         <div class="mb-3">
                             <button type="submit" id="submitReservation" class="btn btn-primary w-100">Submit</button>

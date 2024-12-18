@@ -19,7 +19,6 @@ function reservationSubmit(event) {
     let numbersPattern = /^\d{1}$/;
     let timePattern = /^(0?[1-9]|1[0-2]):[0-5][0-9]$/;
     let datespattern = /^(((20[012]\d|19\d\d)|(1\d|2[0123]))-((0[0-9])|(1[012]))-((0[1-9])|([12][0-9])|(3[01])))$/;
-    //let AlphabetPattern = /^[a-zA-Z\s]+$/;
 
     let personnes = document.querySelector('input[name="personnes"]').value;
     let dates = document.querySelector('input[name="date"]').value;
@@ -63,14 +62,56 @@ function reservationSubmit(event) {
     document.getElementById('btn-close').click()
 }
 
-document.getElementById('submitReservation').addEventListener('click', (event) => reservationSubmit(event));
-
-
-function ReserveValidation() {
-    let form = document.getElementById('reservationForm');
-    form.forEach((element) => {
-        console.log(element);
-    })
+if(document.getElementById('submitReservation')) {
+    document.getElementById('submitReservation').addEventListener('click', (event) => reservationSubmit(event));
 }
-function PlatValidation() {}
+function PlatValidation(event) {
+    event.preventDefault();
+
+    let allowedExtension = ['png', 'jpg', 'jpeg', 'wepg'];
+    let AlphabetPattern = /^[a-zA-Z\s]+$/;
+
+    let dishname = document.querySelector('input[name="dishname"]').value;
+    let dishdesc = document.querySelector('textarea[name="description"]').value;
+    let dishimg = document.querySelector('input[name="dishimage"]').value;
+
+    let path = dishimg.split('.');
+    let extension = path[1];
+
+    if(!dishname || !AlphabetPattern.test(dishname)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Incorrect Input for name'
+        });
+        return;
+    }
+
+    if(!dishdesc || dishdesc.length > 500) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Incorrect Input for description'
+        });
+        return;
+    }
+
+    if(!dishimg || !allowedExtension.includes(extension)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Invalid image format Type(allowed: JPG, PNG)'
+        });
+        return;
+    }
+    Swal.fire({
+        title: "New Plat added!",
+        icon: "success"
+      });
+
+    document.getElementById('btn-close').click();
+    
+}
+document.getElementById('submitPlats').addEventListener('click', (event) => PlatValidation(event))
+
 function MenuVamidation() {}
