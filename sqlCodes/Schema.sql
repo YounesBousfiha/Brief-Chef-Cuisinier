@@ -7,7 +7,7 @@ USE ChefCuisinier;
 
 CREATE TABLE IF NOT EXISTS Roles(
     ID int NOT NULL AUTO_INCREMENT,
-    Role_name ENUM('Chef', 'Client'),
+    Role_name varchar(20),
     PRIMARY KEY(ID)
 );
 
