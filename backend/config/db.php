@@ -20,8 +20,8 @@ class DBconnection {
     public static function getConnection() {
         if(self::$hasinstance == null) {
             self::$hasinstance = new DBconnection();
-            return self::$hasinstance;
         }
+        return self::$hasinstance;
     }
 }
 ?>

@@ -6,13 +6,14 @@ include './controllers/ChefController.php';
 include './controllers/PlatController.php';
 include './controllers/MenuController.php';
 
+
 $request_method = $_SERVER['REQUEST_METHOD'];
 
 $route = htmlspecialchars($_GET['route']);
 
-
 switch ($route) {
     case '/auth/signup':
+        var_dump("Hello");
         if ($request_method === 'POST') {
             AuthController::signup();
         }
@@ -53,15 +54,15 @@ switch ($route) {
         }
 
     case '/chef/stats':
-        if ($request_method === 'GET') {
+        if ($request_method == 'GET') {
             ChefController::getStats();
         }
         break;
 
     case '/chef/menus':
-        if ($request_method === 'GET') {
+        if ($request_method == 'GET') {
             MenuController::getAllMenus();
-        } elseif ($request_method === 'POST') {
+        } elseif ($request_method == 'POST') {
             MenuController::createMenu();
         }
         break;
@@ -91,7 +92,7 @@ switch ($route) {
         if ($request_method === 'GET') {
             PlatController::getAllPlats();
         } elseif ($request_method === 'POST') {
-            PlatController::createPlat();
+            PlatController::AjoutePlat();
         }
         break;
 

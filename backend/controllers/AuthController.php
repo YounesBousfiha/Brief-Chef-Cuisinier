@@ -2,7 +2,6 @@
 
 include './config/db.php';
 
-
 class AuthController {
 
     public static function generateToken() {
@@ -14,9 +13,30 @@ class AuthController {
         //header("Location: https://localhost:3000");
     }
 
-    public static function ValidateUser() {}
+    public static function ValidateUser() {
+        $user  = null;
+        $db = DBconnection::getConnection()->connection;
 
+        $token = $_COOKIE['auth_token'];
+        if($token) {
+            $sql = "SELECT * FROM User WHERE auth_Token = ?";
+            try {
+                var_dump($db); // This show A NULL
+                $stmt = $db->prepare($sql); // BUG is HERE
+                $stmt->bind_param('s', $token);
+                $stmt->execute();
+                $res = $stmt->get_result();
+                $user = $res->fetch_assoc();
+                return $user;
+            } catch (Exception $e) {
+                echo "Validation Failed: " . $e->getMessage();
+            }
+        }
+        return $user;
+    }
+    
     public static function signup() {
+
         $data = json_decode(file_get_contents('php://input'), true);
         $db = DBconnection::getConnection()->connection;
 
@@ -39,6 +59,7 @@ class AuthController {
     }
 
     public static function login() {
+
         $data = json_decode(file_get_contents('php://input'), true);
         $db = DBconnection::getConnection()->connection;
 
