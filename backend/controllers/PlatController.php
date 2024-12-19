@@ -25,7 +25,21 @@ class PlatController {
 
     public static function updatePlat($plat_id) {
         $data = json_decode(file_get_contents('php://input'), true);
+
         $db = DBconnection::getConnection()->connection;
+        echo 1;
+        $sql = "UPDATE Plats SET Plat_type = ?, Plat_desc = ? WHERE ID = ?";
+        echo 2;
+        $stmt = $db->prepare($sql);
+        echo 3;
+        $stmt->bind_param("ssi", $data['Plat_type'], $data['Plat_desc'], $plat_id);
+        echo 4;
+        if($stmt->execute()) {
+            $stmt->close();
+            return 1;
+        }
+        $stmt->close();
+        return -1;
     }
 
     public static function deletePlat($plat_id) {
@@ -36,8 +50,10 @@ class PlatController {
         $stmt = $db->prepare($sql);
         $stmt->bind_param('i', $plat_id);
         if($stmt->execute()) {
+            $stmt->close();
             return 1;
         }
+        $stmt->close();
         return -1;
     }
 
@@ -50,7 +66,7 @@ class PlatController {
         $stmt->execute();
         $res = $stmt->get_result();
         $plats = $res->fetch_all(MYSQLI_ASSOC);
-
+        $stmt->close();
         var_dump($plats);
 
 
@@ -67,6 +83,8 @@ class PlatController {
 
         $res = $stmt->get_result();
         $plat = $res->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->close();
 
         var_dump($plat);
     }
