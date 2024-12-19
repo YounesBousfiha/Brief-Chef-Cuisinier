@@ -7,11 +7,11 @@ include './controllers/PlatController.php';
 include './controllers/MenuController.php';
 
 $request_method = $_SERVER['REQUEST_METHOD'];
-$request_uri = $_SERVER['REQUEST_URI'];
 
-$request_uri = parse_url($request_uri, PHP_URL_PATH);
+$route = htmlspecialchars($_GET['route']);
 
-switch ($request_uri) {
+
+switch ($route) {
     case '/auth/signup':
         if ($request_method === 'POST') {
             AuthController::signup();
@@ -19,7 +19,7 @@ switch ($request_uri) {
         break;
 
     case '/auth/login':
-        if ($request_method === 'POST') {
+        if ($request_method == 'POST') {
             AuthController::login();
         }
         break;
@@ -43,7 +43,7 @@ switch ($request_uri) {
         }
         break;
 
-    case preg_match('/^\/reservations\/(\d+)$/', $request_uri, $matches):
+    case preg_match('/^\/reservations\/(\d+)$/', $route, $matches):
         if ($request_method == 'PUT') {
             UserController::updateReservation();
         }
@@ -75,12 +75,12 @@ switch ($request_uri) {
             ChefController::ReservartionStatus();
         }
         break;
-    case preg_match('/^\/chef\/reservations\/(\d+)\/approve$/', $request_uri, $matches):
+    case preg_match('/^\/chef\/reservations\/(\d+)\/approve$/', $route, $matches):
         if($request_method == 'POST') {
             ChefController::approveReservation();
         }
         break;
-    case preg_match('/^\/chef\/reservations\/(\d+)\/approve$/', $request_uri, $matches):
+    case preg_match('/^\/chef\/reservations\/(\d+)\/approve$/', $route, $matches):
         if($request_method == 'POST') {
             ChefController::rejectReservation();
         }
@@ -96,7 +96,7 @@ switch ($request_uri) {
         break;
 
 
-    case  preg_match('/^\/plats\/(\d+)$/', $request_uri, $matches):
+    case  preg_match('/^\/plats\/(\d+)$/', $route, $matches):
         if ($request_method === 'GET') {
             PlatController::getPlat($plat_id);
         } elseif ($request_method === 'PUT') {
@@ -109,7 +109,7 @@ switch ($request_uri) {
 
 
 
-    case preg_match('/^\/menus\/(\d+)$/', $request_uri, $matches):
+    case preg_match('/^\/menus\/(\d+)$/', $route, $matches):
         if ($request_method === 'GET') {
             MenuController::getMenu($menu_id);
         } elseif ($request_method === 'PUT') {
