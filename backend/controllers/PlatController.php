@@ -28,7 +28,18 @@ class PlatController {
         $db = DBconnection::getConnection()->connection;
     }
 
-    public static function deletePlat($plat_id) {}
+    public static function deletePlat($plat_id) {
+        $db = DBconnection::getConnection()->connection;
+
+        $sql = "DELETE FROM Plats WHERE ID = ?";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param('i', $plat_id);
+        if($stmt->execute()) {
+            return 1;
+        }
+        return -1;
+    }
 
     public static function GetAllPlats() {
         $db = DBconnection::getConnection()->connection;
