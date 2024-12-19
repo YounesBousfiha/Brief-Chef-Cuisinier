@@ -7,7 +7,7 @@ class PlatController {
         $db = DBconnection::getConnection()->connection;
 
         $sql = "INSERT INTO Plats (Plat_type, Plat_desc, Created_by) VALUES(?, ?, ?)";
-        var_dump("Hello");
+
         $user = AuthController::ValidateUser();
         var_dump($user);
         if($user) {
@@ -20,7 +20,7 @@ class PlatController {
                 echo "Operation Failed :" . $e->getMessage();
             }
         }
-        echo json_decode($user);
+        //echo json_decode($user);
     }
 
     public static function ModifyPlat() {
@@ -30,7 +30,20 @@ class PlatController {
 
     public static function SupprimerPlat() {}
 
-    public static function GetAllPlats() {}
+    public static function GetAllPlats() {
+        $db = DBconnection::getConnection()->connection;
+
+        $sql = "SELECT * FROM Plats";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $plats = $res->fetch_all(MYSQLI_ASSOC);
+
+        var_dump($plats);
+
+
+    }
 
     public static function GetPlat() {}
 
