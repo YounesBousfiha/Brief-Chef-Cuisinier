@@ -23,12 +23,12 @@ class PlatController {
         //echo json_decode($user);
     }
 
-    public static function ModifyPlat() {
+    public static function updatePlat($plat_id) {
         $data = json_decode(file_get_contents('php://input'), true);
         $db = DBconnection::getConnection()->connection;
     }
 
-    public static function SupprimerPlat() {}
+    public static function deletePlat($plat_id) {}
 
     public static function GetAllPlats() {
         $db = DBconnection::getConnection()->connection;
@@ -45,7 +45,20 @@ class PlatController {
 
     }
 
-    public static function GetPlat() {}
+    public static function GetPlat($plat_id) {
+        $db = DBconnection::getConnection()->connection;
+
+        $sql = "SELECT * FROM Plats WHERE ID = ?";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("i", $plat_id);
+        $stmt->execute();
+
+        $res = $stmt->get_result();
+        $plat = $res->fetch_all(MYSQLI_ASSOC);
+
+        var_dump($plat);
+    }
 
 }
 

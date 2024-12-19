@@ -10,119 +10,86 @@ include './controllers/MenuController.php';
 $request_method = $_SERVER['REQUEST_METHOD'];
 
 $route = htmlspecialchars($_GET['route']);
+preg_match('/^\/chef\/plats\/(\d+)$/', $route, $matches);
 
-switch ($route) {
-    case '/auth/signup':
-        var_dump("Hello");
-        if ($request_method === 'POST') {
-            AuthController::signup();
-        }
-        break;
+var_dump($matches[1]);
+var_dump($route);
 
-    case '/auth/login':
-        if ($request_method == 'POST') {
-            AuthController::login();
-        }
-        break;
-
-        // User Routes
-    case '/menus':
-        if ($request_method === 'GET') {
-            MenuController::getAllMenus();
-        } elseif ($request_method === 'POST') {
-            UserController::createReservation();
-        }
-        break;
-
-    case '/reservations':
-        if ($request_method == 'GET') {
-            UserController::getReservation();
-        }
-
-        if ($request_method == 'POST') {
-            UserController::createReservation();
-        }
-        break;
-
-    case preg_match('/^\/reservations\/(\d+)$/', $route, $matches):
-        if ($request_method == 'PUT') {
-            UserController::updateReservation();
-        }
-
-        if ($request_method == 'DELETE') {
-            UserController::removeReservation();
-        }
-
-    case '/chef/stats':
-        if ($request_method == 'GET') {
-            ChefController::getStats();
-        }
-        break;
-
-    case '/chef/menus':
-        if ($request_method == 'GET') {
-            MenuController::getAllMenus();
-        } elseif ($request_method == 'POST') {
-            MenuController::createMenu();
-        }
-        break;
-
-    case '/chef/reservations':
-        if ($request_method == 'GET') {
-            ChefController::GetAllReservations();
-        }
-
-        if ($request_method == 'POST') {
-            ChefController::ReservartionStatus();
-        }
-        break;
-    case preg_match('/^\/chef\/reservations\/(\d+)\/approve$/', $route, $matches):
-        if($request_method == 'POST') {
-            ChefController::approveReservation();
-        }
-        break;
-    case preg_match('/^\/chef\/reservations\/(\d+)\/approve$/', $route, $matches):
-        if($request_method == 'POST') {
-            ChefController::rejectReservation();
-        }
-        break;
-
-
-    case '/chef/plats':
-        if ($request_method === 'GET') {
-            PlatController::getAllPlats();
-        } elseif ($request_method === 'POST') {
-            PlatController::AjoutePlat();
-        }
-        break;
-
-
-    case  preg_match('/^\/plats\/(\d+)$/', $route, $matches):
-        if ($request_method === 'GET') {
-            PlatController::getPlat($plat_id);
-        } elseif ($request_method === 'PUT') {
-            PlatController::updatePlat($plat_id);
-        } elseif ($request_method === 'DELETE') {
-            PlatController::deletePlat($plat_id);
-        }
-        break;
-
-
-
-
-    case preg_match('/^\/menus\/(\d+)$/', $route, $matches):
-        if ($request_method === 'GET') {
-            MenuController::getMenu($menu_id);
-        } elseif ($request_method === 'PUT') {
-            MenuController::updateMenu($menu_id);
-        } elseif ($request_method === 'DELETE') {
-            MenuController::deleteMenu($menu_id);
-        }
-        break;
-
-
-    default:
-        header("HTTP/1.1 404 Not Found");
-        echo json_encode(['message' => 'Route not found']);
-        break;
+if ($route === '/auth/signup') {
+    if ($request_method === 'POST') {
+        AuthController::signup();
+    }
+} elseif ($route === '/auth/login') {
+    if ($request_method === 'POST') {
+        AuthController::login();
+    }
+} elseif ($route === '/menus') {
+    if ($request_method === 'GET') {
+        MenuController::getAllMenus();
+    } elseif ($request_method === 'POST') {
+        UserController::createReservation();
+    }
+} elseif ($route === '/reservations') {
+    if ($request_method === 'GET') {
+        UserController::getReservation();
+    } elseif ($request_method === 'POST') {
+        UserController::createReservation();
+    }
+} elseif (preg_match('/^\/reservations\/(\d+)$/', $route, $matches)) {
+    if ($request_method === 'PUT') {
+        UserController::updateReservation();
+    } elseif ($request_method === 'DELETE') {
+        UserController::removeReservation();
+    }
+} elseif ($route === '/chef/stats') {
+    if ($request_method === 'GET') {
+        ChefController::getStats();
+    }
+} elseif ($route === '/chef/menus') {
+    if ($request_method === 'GET') {
+        MenuController::getAllMenus();
+    } elseif ($request_method === 'POST') {
+        MenuController::createMenu();
+    }
+} elseif ($route === '/chef/reservations') {
+    if ($request_method === 'GET') {
+        ChefController::GetAllReservations();
+    } elseif ($request_method === 'POST') {
+        ChefController::ReservartionStatus();
+    }
+} elseif (preg_match('/^\/chef\/reservations\/(\d+)\/approve$/', $route, $matches)) {
+    if ($request_method === 'POST') {
+        ChefController::approveReservation();
+    }
+} elseif (preg_match('/^\/chef\/reservations\/(\d+)\/reject$/', $route, $matches)) {
+    if ($request_method === 'POST') {
+        ChefController::rejectReservation();
+    }
+} elseif ($route === '/chef/plats') {
+    if ($request_method === 'GET') {
+        PlatController::getAllPlats();
+    } elseif ($request_method === 'POST') {
+        PlatController::AjoutePlat();
+    }
+} elseif (preg_match('/^\/chef\/plats\/(\d+)$/', $route, $matches)) {
+    $plat_id = $matches[1];
+    if ($request_method === 'GET') {
+        PlatController::getPlat($plat_id);
+    } elseif ($request_method === 'PUT') {
+        PlatController::updatePlat($plat_id);
+    } elseif ($request_method === 'DELETE') {
+        PlatController::deletePlat($plat_id);
+    }
+} elseif (preg_match('/^\/menus\/(\d+)$/', $route, $matches)) {
+    $menu_id = $matches[1]; 
+    if ($request_method === 'GET') {
+        MenuController::getMenu($menu_id);
+    } elseif ($request_method === 'PUT') {
+        MenuController::updateMenu($menu_id);
+    } elseif ($request_method === 'DELETE') {
+        MenuController::deleteMenu($menu_id);
+    }
+} else {
+    header("HTTP/1.1 404 Not Found");
+    echo json_encode(['message' => 'Route not found']);
 }
