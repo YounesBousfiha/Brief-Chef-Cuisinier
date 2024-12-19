@@ -19,9 +19,13 @@ class AuthController {
     public static function signup() {
         $data = json_decode(file_get_contents('php://input'), true);
         $db = DBconnection::getConnection()->connection;
+
+        if($data['Password'] != $data['PasswordConfirmation']) {
+            return -1;
+        }
+
         $sql = "INSERT INTO User (Nom, Prenom, Email, Password, Phone, Role_id) VALUES(?, ?, ?, ?, ?, ?)";
-        // Check if user Exist
-        // Validate if password Duplicate
+
         try {
             $stmt = $db->prepare($sql);
             $hashed_password = password_hash($data['Password'], PASSWORD_DEFAULT);
@@ -31,7 +35,7 @@ class AuthController {
         } catch (Exception $e) {
             echo 'Operatio Failed: ' . $e->getMessage();
         }
-        
+        return 1;
     }
 
     public static function login() {
@@ -46,6 +50,8 @@ class AuthController {
         $res = $entries->fetch_assoc();
         if(password_verify($data['Password'], $res['Password'])) {
             $token = AuthController::generateToken();
+
+            setcookie("auth_token", $token, time() + 3600, "/");
 
             $sql = "UPDATE User SET auth_Token = ? WHERE ID = ?";
             $stmt = $db->prepare($sql);
