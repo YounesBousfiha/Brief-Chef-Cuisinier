@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS User(
     Password varchar(100) NOT NULL,
     Phone varchar(15) NOT NULL,
     Role_id int NOT NULL,
+    auth_token varchar(100),
     PRIMARY KEY(ID),
     FOREIGN KEY(role_id) REFERENCES Roles(ID)
 );
@@ -48,8 +49,8 @@ CREATE TABLE IF NOT EXISTS Reservations(
     User_id int NOT NULL,
     Menu_id int NOT NULL,
     PRIMARY KEY(ID),
-    FOREIGN KEY(User_id) REFERENCES User(ID),
-    FOREIGN KEY(Menu_id) REFERENCES Menu(ID)
+    FOREIGN KEY(User_id) REFERENCES User(ID) ON DELETE CASCADE,
+    FOREIGN KEY(Menu_id) REFERENCES Menu(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Menu_Plats(
@@ -57,6 +58,6 @@ CREATE TABLE IF NOT EXISTS Menu_Plats(
     Menu_id int NOT NULL,
     Plat_id int NOT NULL,
     PRIMARY KEY(ID),
-    FOREIGN KEY(Menu_id) REFERENCES Menu(ID),
-    FOREIGN KEY(Plat_id) REFERENCES Plats(ID)
+    FOREIGN KEY(Menu_id) REFERENCES Menu(ID) ON DELETE CASCADE,
+    FOREIGN KEY(Plat_id) REFERENCES Plats(ID) ON DELETE CASCADE
 );

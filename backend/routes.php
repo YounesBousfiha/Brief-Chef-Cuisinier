@@ -80,7 +80,7 @@ if ($route === '/auth/signup') {
     } elseif ($request_method === 'DELETE') {
         PlatController::deletePlat($plat_id);
     }
-} elseif (preg_match('/^\/menus\/(\d+)$/', $route, $matches)) {
+} elseif (preg_match('/^\/chef\/menus\/(\d+)$/', $route, $matches)) {
     $menu_id = $matches[1]; 
     if ($request_method === 'GET') {
         MenuController::getMenu($menu_id);
