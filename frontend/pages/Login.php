@@ -2,16 +2,22 @@
 include '../includes/auth.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if($_POST['operation'] == 'Logout') {
+      Logout();
+      header("Refresh: 0;");
+      echo "Lougout Success!";
+    } else {
+      echo "No";
+    }
     $email = $_POST['Email'];
     $password = $_POST['Password'];
 
     $islogged = Login($conn, $email, $password);
-    var_dump($islogged);
+  
     if($islogged) {
-        header("Location: https://localhost:3000/hello");
+        header("Refresh: 0;");
     } else {
         echo "Login Failed!";
-
     }
   }
 
@@ -39,7 +45,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <li class="nav-item"><a class="nav-link" href="faq.html" style="color: rgba(224,217,217,0.9);">Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html" style="color: rgba(224,217,217,0.9);">Reservation</a></li>
                 </ul>
-                <p class="ms-auto navbar-text actions" style="text-align: right;margin: 5px;"> <a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Login</a><a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Sign Up</a></p>
+                <?php
+                  
+                    if($_COOKIE['auth_token']) {
+                    echo '<form method="POST" class="ms-auto navbar-text actions" style="text-align: right;margin: 5px;">
+                        <button type="submit" name="operation" value="Logout" class="btn btn-light action-button" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Logout</button>
+                        </form>';
+                  } else {
+                    echo '<p class="ms-auto navbar-text actions" style="text-align: right;margin: 5px;"> <a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Login</a><a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Sign Up</a></p>';
+                  }
+                
+                ?>
             </div>
         </div>
     </nav>
