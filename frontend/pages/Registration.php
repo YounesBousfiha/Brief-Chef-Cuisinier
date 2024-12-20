@@ -1,58 +1,7 @@
 <?php
-  include '../includes/auth.php';
+  include '../includes/header.php';
 
-  function validateForm($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
-
-  if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $Nom = validateForm($_POST['Nom']);
-    $Prenom = validateForm($_POST['Prenom']);
-    $Email = validateForm($_POST['Email']);
-    $Phone = validateForm($_POST['Phone']);
-    $Password = $_POST['Password'];
-
-    if(isset($Nom) && isset($Prenom) && isset($Email) && isset($Phone)) {
-      $status = emailEnumeration($conn, $Email);
-      if(!$status && $Password === $_POST['PasswordConfirmation']) {
-        SignUp($conn, $Prenom, $Nom, $Email, $Phone, $Password);
-      }
-    } else {
-      echo "Something Went Wrong!";
-    }
-  }
-
-?>
-
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Registration</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-md navbar-fixed-top navigation-clean-button navbar-light" style="background: #82471f;border-radius: 20;border-top-left-radius: 20;border-top-right-radius: 20;border-bottom-right-radius: 20;border-bottom-left-radius: 20;border-style: none;padding-top: 0;padding-bottom: 10px;">
-        <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div><a class="navbar-brand" href="#"><span><span style="color: rgb(249, 249, 249);">Michelin</span></span> </a></div>
-            <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
-                <ul class="navbar-nav nav-right">
-                    <li class="nav-item"><a class="nav-link active" href="../index.html" style="color: rgba(224,217,217,0.9);">home </a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html" style="color: rgba(224,217,217,0.9);">about </a></li>
-                    <li class="nav-item"><a class="nav-link" href="faq.html" style="color: rgba(224,217,217,0.9);">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html" style="color: rgba(224,217,217,0.9);">Reservation</a></li>
-                </ul>
-                <p class="ms-auto navbar-text actions" style="text-align: right;margin: 5px;"> <a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Login</a><a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Sign Up</a></p>
-            </div>
-        </div>
-    </nav>
+  ?>
     <div class="d-flex d-xl-flex align-items-center align-items-xl-center" style="width: 100%;height: 100%;">
         <div class="container">
             <div class="row justify-content-center">

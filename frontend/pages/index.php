@@ -1,34 +1,6 @@
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>index</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/Black-Navbar.css">
-    <link rel="stylesheet" href="assets/css/Lightbox-Gallery-baguetteBox.min.css">
-    <link rel="stylesheet" href="assets/css/Testimonials-images.css">
-</head>
-
-<body>
-    
-    <nav class="navbar navbar-expand-md navbar-fixed-top navigation-clean-button navbar-light" style="background: #82471f;border-radius: 20;border-top-left-radius: 20;border-top-right-radius: 20;border-bottom-right-radius: 20;border-bottom-left-radius: 20;border-style: none;padding-top: 0;padding-bottom: 10px;">
-        <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div><a class="navbar-brand" href="#"><span><span style="color: rgb(249, 249, 249);">Michelin</span></span> </a></div>
-            <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
-                <ul class="navbar-nav nav-right">
-                    <li class="nav-item"><a class="nav-link active" href="index.html" style="color: rgba(224,217,217,0.9);">home </a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html" style="color: rgba(224,217,217,0.9);">about </a></li>
-                    <li class="nav-item"><a class="nav-link" href="faq.html" style="color: rgba(224,217,217,0.9);">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html" style="color: rgba(224,217,217,0.9);">Reservation</a></li>
-                </ul>
-                <p class="ms-auto navbar-text actions" style="text-align: right;"> <a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Login</a><a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Sign Up</a></p>
-            </div>
-        </div>
-    </nav>
+<?php
+ include '../includes/header.php';
+?>
     <section>
         <div data-bss-parallax-bg="true" style="height: 600px;background-image: url(https://cdn.bootstrapstudio.io/placeholders/1400x800.png);background-position: center;background-size: cover;">
             <div class="container h-100">
