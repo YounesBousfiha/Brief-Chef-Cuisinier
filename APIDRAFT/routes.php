@@ -84,8 +84,6 @@ if ($route === '/auth/signup') {
     $menu_id = $matches[1]; 
     if ($request_method === 'GET') {
         MenuController::getMenu($menu_id);
-    } elseif ($request_method === 'PUT') {
-        MenuController::updateMenu($menu_id);
     } elseif ($request_method === 'DELETE') {
         MenuController::deleteMenu($menu_id);
     }

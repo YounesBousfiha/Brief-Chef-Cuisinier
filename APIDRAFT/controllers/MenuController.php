@@ -4,8 +4,25 @@ class MenuController{
     
     // Menu Will be Based on Plats
     public static function getMenu() {}
-    public static function getAllMenus() {}
-    public static function updateMenu() {}
+    public static function getAllMenus() {
+        $db = DBconnection::getConnection()->connection;
+
+        $sql = "SELECT Menu.ID AS menu_id, Menu.Nom AS menu_name, Plat.ID AS plat_id, Plat.Nom AS plat_name
+        FROM Menu INNER JOIN Menu_Plats ON Menu.ID = Menu_Plats.Menu_id
+        INNER JOIN Plat ON Menu_Plats.Plat_id = Plat.ID";
+
+        $stmt = $db->prepare($sql); // BUG IS HERE
+
+        $stmt->execute();
+
+        $res = $stmt->get_result();
+        $menus = $res->fetch_all(MYSQLI_ASSOC);
+
+        var_dump($menus);
+        var_dump('Hello');
+
+
+    }
     public static function deleteMenu($menu_id) {
         $db = DBconnection::getConnection()->connection;
         

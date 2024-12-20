@@ -1,12 +1,31 @@
+<?php
+include '../includes/auth.php';
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['Email'];
+    $password = $_POST['Password'];
+
+    $islogged = Login($conn, $email, $password);
+    var_dump($islogged);
+    if($islogged) {
+        header("Location: https://localhost:3000/hello");
+    } else {
+        echo "Login Failed!";
+
+    }
+  }
+
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Registration</title>
+    <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="../assets/css/Ludens-basic-login.css">
 </head>
 
 <body>
@@ -15,7 +34,7 @@
             <div><a class="navbar-brand" href="#"><span><span style="color: rgb(249, 249, 249);">Michelin</span></span> </a></div>
             <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
                 <ul class="navbar-nav nav-right">
-                    <li class="nav-item"><a class="nav-link active" href="../index.html" style="color: rgba(224,217,217,0.9);">home </a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html" style="color: rgba(224,217,217,0.9);">home </a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html" style="color: rgba(224,217,217,0.9);">about </a></li>
                     <li class="nav-item"><a class="nav-link" href="faq.html" style="color: rgba(224,217,217,0.9);">Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html" style="color: rgba(224,217,217,0.9);">Reservation</a></li>
@@ -37,33 +56,18 @@
                                 <div class="col-lg-6">
                                     <div class="p-5">
                                         <div class="text-center">
-                                            <h4 class="text-dark mb-4">SignUp</h4>
+                                            <h4 class="text-dark mb-4">Welcome back!</h4>
                                         </div>
-                                        <form class="user">
-                                            <div class="mb-3">
-                                              <input class="form-control form-control-user" type="text"  placeholder="Enter Your FirstName.." name="firstName">
-                                            </div>
-                                            <div class="mb-3">
-                                              <input class="form-control form-control-user" type="text"  placeholder="Enter Your LastName.." name="lastName">
-                                            </div>
-                                            <div class="mb-3">
-                                              <input class="form-control form-control-user" type="email"  aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" style="margin-top: 10px;">
-                                            </div>
-
-                                            <div class="mb-3">
-                                              <input class="form-control form-control-user" type="password"  placeholder="Password" name="password">
-                                            </div>
-                                            <div class="mb-3">
-                                              <input class="form-control form-control-user" type="password"  placeholder="Password Confirmation" name="password" style="margin-top: 10px;">
-                                            </div>
+                                        <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" class="user">
+                                            <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="Email"></div>
+                                            <div class="mb-3"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="Password"></div>
                                             <div class="mb-3">
                                                 <div class="custom-control custom-checkbox small"></div>
-                                            </div>
-
-                                            <button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: #82471f;">SignUp</button>
-
+                                            </div><button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: #82471f;">Login</button>
+                                            <hr>
+                                            <hr>
                                         </form>
-                                        <div class="text-center"></div>
+                                        <div class="text-center"><a class="small" href="forgot-password.html" style="color: #82471f;">Forgot Password?</a></div>
                                     </div>
                                 </div>
                             </div>

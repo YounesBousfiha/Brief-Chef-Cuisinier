@@ -110,6 +110,7 @@ function PlatValidation(event) {
       });
 
     document.getElementById('btn-close').click();
+    document.getElementById
     
 }
 document.getElementById('submitPlats').addEventListener('click', (event) => PlatValidation(event))
