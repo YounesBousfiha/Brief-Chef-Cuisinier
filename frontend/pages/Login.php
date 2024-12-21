@@ -21,7 +21,7 @@
                                             <div class="mb-3"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="Password"></div>
                                             <div class="mb-3">
                                                 <div class="custom-control custom-checkbox small"></div>
-                                            </div><button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: #82471f;">Login</button>
+                                            </div><button class="btn btn-primary d-block btn-user w-100" type="submit" name="operation" value="Login" style="background: #82471f;">Login</button>
                                             <hr>
                                             <hr>
                                         </form>

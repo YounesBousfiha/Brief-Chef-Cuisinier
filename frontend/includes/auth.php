@@ -16,7 +16,7 @@ function emailEnumeration($conn, $email) {
 }
         
 function SignUp($conn, $prenom, $nom, $email, $phone, $password) {
-    $role_id = 1;
+    $role_id = 2;
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $sql = 'INSERT INTO User (Nom, Prenom, Email, Password, Phone, Role_id) VALUES(?, ?, ?, ?, ?, ?)';
     $stmt = $conn->prepare($sql);

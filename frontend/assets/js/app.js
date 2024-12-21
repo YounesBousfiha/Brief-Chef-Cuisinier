@@ -1,5 +1,3 @@
-//import Swal from 'sweetalert2';
-
 function addmorefied() {
     let btns = document.getElementById('buttons');
 
@@ -54,9 +52,10 @@ function reservationSubmit(event) {
     }
 
     Swal.fire({
-        title: "You Just Make a Reservation!",
-        text: "Thanks for We will contact you soon!",
+        title: "Reservation Done!",
         icon: "success"
+      }).then(() => {
+        event.target.submit();
       });
 
     document.getElementById('btn-close').click()
@@ -65,54 +64,8 @@ function reservationSubmit(event) {
 if(document.getElementById('submitReservation')) {
     document.getElementById('submitReservation').addEventListener('click', (event) => reservationSubmit(event));
 }
-function PlatValidation(event) {
-    event.preventDefault();
-
-    let allowedExtension = ['png', 'jpg', 'jpeg', 'wepg'];
-    let AlphabetPattern = /^[a-zA-Z\s]+$/;
-
-    let dishname = document.querySelector('input[name="dishname"]').value;
-    let dishdesc = document.querySelector('textarea[name="description"]').value;
-    let dishimg = document.querySelector('input[name="dishimage"]').value;
-
-    let path = dishimg.split('.');
-    let extension = path[1];
-
-    if(!dishname || !AlphabetPattern.test(dishname)) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Incorrect Input for name'
-        });
-        return;
-    }
-
-    if(!dishdesc || dishdesc.length > 500) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Incorrect Input for description'
-        });
-        return;
-    }
-
-    if(!dishimg || !allowedExtension.includes(extension)) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Invalid image format Type(allowed: JPG, PNG)'
-        });
-        return;
-    }
-    Swal.fire({
-        title: "New Plat added!",
-        icon: "success"
-      });
-
-    document.getElementById('btn-close').click();
-    document.getElementById
-    
-}
-document.getElementById('submitPlats').addEventListener('click', (event) => PlatValidation(event))
 
 function MenuVamidation() {}
+
+
+

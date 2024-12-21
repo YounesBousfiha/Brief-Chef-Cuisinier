@@ -41,7 +41,7 @@
                                                 <div class="custom-control custom-checkbox small"></div>
                                             </div>
 
-                                            <button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: #82471f;">SignUp</button>
+                                            <button class="btn btn-primary d-block btn-user w-100" name="operation" value="signup" type="submit" style="background: #82471f;">SignUp</button>
 
                                         </form>
                                         <div class="text-center"></div>

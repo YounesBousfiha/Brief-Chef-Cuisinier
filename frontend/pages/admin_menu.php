@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>user_admin_menus</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans&amp;display=swap">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-    <link rel="stylesheet" href="../assets/css/Gamanet_Sidebar_v1.css">
-    <link rel="stylesheet" href="../assets/css/Sidebar-Menu-sidebar.css">
-    <link rel="stylesheet" href="../assets/css/Sidebar-Menu.css">
-</head>
-
-<body>
+<?php
+    include "../includes/header.php";
+?>
 
     <div class="modal fade" id="addMenu" tabindex="-1" aria-labelledby="ajouteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -37,31 +24,11 @@
             </div>
         </div>
     </div>
-
-    <nav class="navbar navbar-expand-md navbar-fixed-top navigation-clean-button navbar-light" style="background: #82471f;border-radius: 20;border-top-left-radius: 20;border-top-right-radius: 20;border-bottom-right-radius: 20;border-bottom-left-radius: 20;border-style: none;padding-top: 0;padding-bottom: 10px;">
-        <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div><a class="navbar-brand" href="#"><span><span style="color: rgb(249, 249, 249);">Michelin</span></span> </a></div>
-            <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
-                <ul class="navbar-nav nav-right">
-                    <li class="nav-item"><a class="nav-link active" href="../index.html" style="color: rgba(224,217,217,0.9);">home </a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html" style="color: rgba(224,217,217,0.9);">about </a></li>
-                    <li class="nav-item"><a class="nav-link" href="faq.html" style="color: rgba(224,217,217,0.9);">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html" style="color: rgba(224,217,217,0.9);">Reservation</a></li>
-                </ul>
-                <p class="ms-auto navbar-text actions" style="text-align: right;margin: 5px;"> <a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Login</a><a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Sign Up</a></p>
-            </div>
-        </div>
-    </nav>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-xl-2">
-                <ul class="list-sidebar mt-5">
-                    <li class="list-sidebar-item"><a id="sidebar-item-id1" class="list-sidebar-link d-flex align-items-center" href="#" style="height: 2.5rem;"><img class="list-sidebar-icon" src="../assets/img/icon_home.svg" width="24" height="24"><span data-txt-key="txtSidebarItem1">Statistiques</span></a></li>
-                    <li class="list-sidebar-item"><a id="sidebar-item-id2" class="list-sidebar-link d-flex align-items-center active" href="#" style="height: 2.5rem;"><img class="list-sidebar-icon" src="../assets/img/icon_user.svg" width="24" height="24"><span data-txt-key="txtSidebarItem2">Reservations</span></a></li>
-                    <li class="list-sidebar-item"><a id="sidebar-item-id3" class="list-sidebar-link d-flex align-items-center disabled" href="#" style="height: 2.5rem;"><img class="list-sidebar-icon" src="../assets/img/icon_calendar.svg" width="24" height="24"><span data-txt-key="txtSidebarItem3">Plats</span></a></li>
-                    <li class="list-sidebar-item"><a id="sidebar-item-id3-1" class="list-sidebar-link d-flex align-items-center disabled" href="#" style="height: 2.5rem;"><img class="list-sidebar-icon" src="../assets/img/icon_calendar.svg" width="24" height="24"><span data-txt-key="txtSidebarItem3">Menus</span></a></li>
-                </ul>
-            </div>
+            <?php
+                include '../includes/sidebar.php';
+            ?>
             <div class="col">
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-6 col-xxl-12">
